@@ -1,0 +1,26 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": [ "8E7Q654P2A.space.hitback.Kika" ],
+             "components": [
+               {
+                  "/": "/*",
+                  "comment": "Matches any URL with a path that starts with /."
+               },
+               {
+                  "/": "/*",
+                  "?": { "uid": "????" },
+                  "comment": "Matches any URL with a path that starts with /help/ and that has a query item with name 'articleNumber' and a value of exactly four characters."
+               }
+             ]
+           }
+       ]
+   },
+   "webcredentials": {
+      "apps": [ "8E7Q654P2A.space.hitback.Kika" ]
+   },
+   "appclips": {
+      "apps": ["8E7Q654P2A.space.hitback.Kika"]
+   }
+}
