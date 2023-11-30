@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granim.js Demo</title>
+    <title>Kika</title>
     <style>
         /* 设置canvas元素覆盖整个视口 */
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
+            overflow: hidden;
+            position: relative;
+            /* 添加这个以创建一个新的堆叠上下文 */
         }
+
         canvas {
             display: block;
             height: 100%;
@@ -17,17 +23,76 @@
             position: absolute;
             top: 0;
             left: 0;
+            z-index: -2;
+            /* 将canvas置于最底层 */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             z-index: -1;
+            background-image: url('noise.png');
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* 页面内容样式 */
+        .content {
+            position: relative;
+            /* 确保内容在模糊层之上 */
+            z-index: 1;
+        }
+
+        /* 透明按钮样式 */
+        .transparent-button {
+            background-color: rgba(255, 255, 255, 0.5);
+            /* 半透明背景 */
+            border: 2px solid white;
+            /* 白色边框 */
+            color: white;
+            /* 文字颜色 */
+            padding: 10px 20px;
+            /* 内边距 */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            /* 圆角边框 */
+            transition: background-color 0.3s, color 0.3s;
+            /* 平滑过渡效果 */
+        }
+
+        .transparent-button:hover {
+            background-color: white;
+            /* 鼠标悬浮时背景变为不透明的白色 */
+            color: black;
+            /* 鼠标悬浮时文字变为黑色 */
         }
     </style>
 </head>
+
 <body>
 
     <!-- Granim.js的Canvas元素 -->
     <canvas id="granim-canvas"></canvas>
 
-    <!-- 你的页面内容 -->
-    <h1 style="text-align: center; color: white;">Welcome to Kika, start your new way of socializing and browsing pictures!</h1>
+    <div class="content">
+        <h1 style="text-align: center; color: white;">Welcome to Kika.</h1>
+
+        <!-- 添加透明按钮 -->
+        <div style="text-align: center;">
+            <button class="transparent-button">Join TestFlight</button>
+        </div>
+
+        <!-- 其他内容 -->
+    </div>
 
     <!-- 引入 Granim.js -->
     <script src="granim.min.js"></script>
@@ -36,14 +101,13 @@
         // 使用 Granim.js 创建渐变背景
         var granimInstance = new Granim({
             element: '#granim-canvas',
-            direction: 'left-right',
+            direction: 'diagonal',
             isPausedWhenNotInView: true,
-            states : {
+            states: {
                 "default-state": {
                     gradients: [
-                        ['#ff9966', '#ff5e62'],
-                        ['#00F260', '#0575E6'],
-                        ['#e1eec3', '#f05053']
+                        ['#2A196A', '#0F1533'],
+                        ['#35357C', '#0F0D0E']
                     ],
                     transitionSpeed: 7000
                 }
@@ -51,4 +115,5 @@
         });
     </script>
 </body>
+
 </html>
