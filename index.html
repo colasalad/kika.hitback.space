@@ -1,3 +1,54 @@
 <!DOCTYPE html>
-Hello, world
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granim.js Demo</title>
+    <style>
+        /* 设置canvas元素覆盖整个视口 */
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        canvas {
+            display: block;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Granim.js的Canvas元素 -->
+    <canvas id="granim-canvas"></canvas>
+
+    <!-- 你的页面内容 -->
+    <h1 style="text-align: center; color: white;">Welcome to Kika, start your new way of socializing and browsing pictures!</h1>
+
+    <!-- 引入 Granim.js -->
+    <script src="granim.min.js"></script>
+
+    <script>
+        // 使用 Granim.js 创建渐变背景
+        var granimInstance = new Granim({
+            element: '#granim-canvas',
+            direction: 'left-right',
+            isPausedWhenNotInView: true,
+            states : {
+                "default-state": {
+                    gradients: [
+                        ['#ff9966', '#ff5e62'],
+                        ['#00F260', '#0575E6'],
+                        ['#e1eec3', '#f05053']
+                    ],
+                    transitionSpeed: 7000
+                }
+            }
+        });
+    </script>
+</body>
 </html>
